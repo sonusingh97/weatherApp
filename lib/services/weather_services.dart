@@ -5,9 +5,9 @@ import '../model/weatherModel.dart';
 
 
 class WeatherService {
-  final String apiKey = '15d8f0581a5a9f34156ee9c2009ad32d'; // Replace with your OpenWeatherMap API key
+  final String apiKey = '15d8f0581a5a9f34156ee9c2009ad32d';
 
-  // Fetch current weather by coordinates (latitude & longitude)
+
   Future<WeatherModel> fetchWeatherByLocation(double latitude, double longitude) async {
     final response = await http.get(
       Uri.parse('https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric'),
@@ -35,7 +35,6 @@ class WeatherService {
     }
   }
 
-  // Fetch 5-day weather forecast by coordinates
   Future<List<Forecast>> fetchForecastByLocation(double latitude, double longitude) async {
     final response = await http.get(
       Uri.parse('https://api.openweathermap.org/data/2.5/forecast?lat=$latitude&lon=$longitude&appid=$apiKey&units=metric'),
@@ -46,16 +45,16 @@ class WeatherService {
       final List<dynamic> forecastList = data['list'];
 
       return forecastList.map((forecastData) {
-        final date = DateTime.parse(forecastData['dt_txt']); // Convert date string to DateTime
+        final date = DateTime.parse(forecastData['dt_txt']);
         final temperature = forecastData['main']['temp'].toDouble();
         final description = forecastData['weather'][0]['description'];
-        final iconCode = forecastData['weather'][0]['icon']; // Get weather icon code
+        final iconCode = forecastData['weather'][0]['icon'];
 
         return Forecast(
           date: date,
           temperature: temperature,
           description: description,
-          iconCode: iconCode, // Pass the icon code to Forecast
+          iconCode: iconCode,
         );
       }).toList();
     } else {
