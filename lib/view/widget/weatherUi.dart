@@ -15,9 +15,6 @@ class WeatherUI extends StatelessWidget {
 
     return Stack(
       children: [
-        // Background Gradient based on weather condition
-
-
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
@@ -28,22 +25,20 @@ class WeatherUI extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // City Name
+
                     Text(
                       weather!.city,
                       style: const TextStyle(
                         fontSize: 34,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
-
                       ),
                     ),
                     const SizedBox(height: 10),
-                    // Temperature
+
                     Image.network(
                       'https://openweathermap.org/img/wn/${weather.icon}@2x.png', // Weather icon
-                      /* height: 40,
-                      width: 40,*/
+
                     ),
                     const SizedBox(height: 10),
                     Text(
@@ -52,11 +47,10 @@ class WeatherUI extends StatelessWidget {
                         fontSize: 64,
                         fontWeight: FontWeight.w300,
                         color: Colors.black,
-
                       ),
                     ),
                     const SizedBox(height: 10),
-                    // Weather Description
+
                     Text(
                       weather.description.toUpperCase(),
                       style: const TextStyle(
@@ -68,7 +62,7 @@ class WeatherUI extends StatelessWidget {
                   ],
                 ),
               ),
-              // Forecast Section with Blurred Background
+
               Expanded(
                 flex: 2,
                 child: Container(
@@ -102,33 +96,4 @@ class WeatherUI extends StatelessWidget {
     );
   }
 
-  // Returns a gradient based on weather description
-  LinearGradient getWeatherGradient(String weatherDescription) {
-    switch (weatherDescription.toLowerCase()) {
-      case 'clear':
-        return const LinearGradient(
-          colors: [Colors.lightBlueAccent, Colors.blue],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        );
-      case 'clouds':
-        return const LinearGradient(
-          colors: [Colors.grey, Colors.blueGrey],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        );
-      case 'rain':
-        return const LinearGradient(
-          colors: [Colors.blueGrey, Colors.black45],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        );
-      default:
-        return const LinearGradient(
-          colors: [Colors.orange, Colors.pink],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        );
-    }
-  }
 }

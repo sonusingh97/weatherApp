@@ -20,7 +20,7 @@ class WeatherService {
       final icon = data['weather'][0]['icon'];
       final cityName = data['name'];
 
-      // Fetch forecast data using coordinates
+
       List<Forecast> forecast = await fetchForecastByLocation(latitude, longitude);
 
       return WeatherModel(

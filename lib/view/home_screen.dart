@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('Weather'),
         centerTitle: true,
         elevation: 0,
-       // backgroundColor: Colors,
+
       ),
       body: weatherProvider.isLoading
           ? const Center(child: CircularProgressIndicator())

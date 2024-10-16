@@ -28,7 +28,7 @@ class ForecastCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            DateFormat('EEE,d').format(forecast.date), // Show date in a readable format
+            DateFormat('EEE,d').format(forecast.date),
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -36,14 +36,14 @@ class ForecastCard extends StatelessWidget {
             ),
           ),
           Text(
-            DateFormat('h:mm a').format(forecast.date), // Show time in a readable format
+            DateFormat('h:mm a').format(forecast.date),
             style: const TextStyle(
               fontSize: 14,
               color: Colors.white,
             ),
           ),
           const SizedBox(height: 5),
-          // Show weather icon if you decide to include it later
+
           Image.network(
             'https://openweathermap.org/img/wn/${forecast.iconCode}@2x.png', // Weather icon
             height: 40,
@@ -51,7 +51,7 @@ class ForecastCard extends StatelessWidget {
           ),
           const SizedBox(height: 5),
           Text(
-            '${forecast.temperature.toStringAsFixed(1)}°C', // Show temperature with one decimal point
+            '${forecast.temperature.toStringAsFixed(1)}°C',
             style: const TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.w600,

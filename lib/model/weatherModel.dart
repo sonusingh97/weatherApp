@@ -13,7 +13,7 @@ class WeatherModel {
     required this.forecast,
   });
 
-  // Factory method to create a WeatherModel from JSON response
+
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
     List<Forecast> forecastList = (json['forecast'] as List)
         .map((data) => Forecast.fromJson(data))
@@ -30,7 +30,7 @@ class WeatherModel {
 }
 
 class Forecast {
-  final DateTime date; // Changed from String to DateTime for easier formatting
+  final DateTime date;
   final double temperature;
   final String description;
   final String iconCode;
@@ -42,13 +42,13 @@ class Forecast {
     required this.iconCode,
   });
 
-  // Factory method to create a Forecast object from JSON response
+
   factory Forecast.fromJson(Map<String, dynamic> json) {
     return Forecast(
-      date: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000), // Convert Unix timestamp to DateTime
+      date: DateTime.fromMillisecondsSinceEpoch(json['dt'] * 1000),
       temperature: json['main']['temp'],
       description: json['weather'][0]['description'],
-      iconCode: json['weather'][0]['icon'], // Extract icon code from weather data
+      iconCode: json['weather'][0]['icon'],
     );
   }
 }
